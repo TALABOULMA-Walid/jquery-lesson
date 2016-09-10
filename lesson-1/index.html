@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title></title>
+	<style>
+		ul li {color: red;}
+		.emphasis {color: blue;}
+	</style>	
+</head>
+
+<body>
+
+<ul>
+	<li>Hello 1</li>
+	<li>Hello 2</li>
+	<li>Hello 3 <i> yo </i></li>
+</ul>
+
+
+<!--  use a CDN  link of the production (compressed) jQuery -->
+<script src="../jquery-3.1.0.js"></script>
+
+<script>
+	var lis = jQuery('ul li'); // inspect with developer tools
+	console.log(lis);
+	lis.css("color","green");
+	lis.addClass('emphasis');
+	$('ul li i').addClass('emphasis');
+</script>
+</body>
+</html>
