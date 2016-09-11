@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>not so fast jquery !!</title>
+	<script src="../jquery-3.1.0.js"></script>
+	<style>
+		.emphasis {font-weight: bold;}
+		.emphasis2 {font-style: italic;
+					font-weight: bolder;}
+	</style>
+
+	<script>
+	// must wait till the DOM is loaded (li doesn't exist yet)
+	$(document).ready(function() {
+		// anonymous function
+		$('li:first-child').addClass('emphasis');
+	});
+
+	//shortcut for $(document).ready(function)  pass directly
+	// a function to jquery object $
+	$(function(){
+		$('li:nth-child(2)').addClass('emphasis2');
+	});
+
+	</script>
+	
+
+
+</head>
+<body>
+
+<ul>
+	<li>hello</li>
+	<li>hello 2</li>
+	<li>hello 3</li>
+</ul>
+
+
+</body>
+</html>
