@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>The basics of querying the DOM</title>
+
+<style>
+	li { color : black; font-weight: normal; font-style: normal; }		/* setting the default style for li to avoid inheritence */
+	/*ul.emphasis > li { color: green; } /* this styling affects only direct children of ul.emphasis */
+	/*ul.emphasis li {color: red;}     /* this styling affects all the descendant li */
+	.emphasis { color: green; }
+	.container { color: blue; }
+	.underlined {text-decoration: underline;}
+	.overlined {text-decoration: overline;}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+	<h1>Welcome to My Website</h1>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</p>
+
+	<ul class="emphasis">
+		<p> inside the unordered list </p>
+	    <li>item</li>
+	    <li>item 2</li>
+	    <li>item 3</li>
+	    <li>item 4</li>
+	    <li>outside the nest 
+	    <ul>
+	    		<li>Hello from the nest.</li>
+	    		<li>other Hello from the nest.</li>
+	    </ul>
+
+	    </li>
+    </ul>
+
+</div>
+
+<script src="../jquery-3.1.0.js"></<script type="text/javascript"></script>
+
+<script>
+	$('ul.emphasis').children('li').css('font-weight', 'bold');    // children select DIRECT children only ( first level of nesting only )
+	$('ul.emphasis').find('li').css('font-style', 'italic');		// find select all descendants, traversing the whole nesting
+	$('ul.emphasis').children('li:first-child').addClass('underlined');  // first-child === nth-child(1)
+	$('ul.emphasis').find('li:nth-child(1)').addClass('overlined'); 
+	$('ul.emphasis').find('li').first().addClass('overlined');  // .first() will select only the first element WILL NOT GO THROUGH THE NEST
+	$('ul.emphasis').find('li').eq(5).text('added with jQuery'); // .eq() start indexing from O 
+	$('ul.emphasis').find('li').eq(1).next().text('added with eq(1).next()'); // good illustration of chainning
+	$('ul.emphasis').find('li').eq(1).prev().text('added with eq(1).prev()');
+
+	////// selecting ascendants 
+	$('li').parent('.emphasis').removeClass('emphasis'); 		// only direct parent
+	$('li').parents('div.container').removeClass('container');  // go up the whole family tree
+	$('li').closest('div').addClass('emphasis'); // get the closest element up the DOM tree  (starting from the element itself)
+
+</script>
+
+
+</body>
+</html>
