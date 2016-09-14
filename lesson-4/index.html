@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events ...101</title>
+	<link rel="stylesheet" type="text/css" href="day.css">
+
+</head>
+<body>
+
+<h1>Welcome to my Website</h1>
+
+<!-- data-NAME create HTML5  user custom attribute -->
+<button id="day" data-cssfile="day.css" disabled="disabled">day</button>
+<button id="night" data-cssfile="night.css">night</button>
+
+<script type="text/javascript" src="../jquery-3.1.0.js"></script>
+<script>
+// self invoking anonymous function to hide variables to the global scope
+(function(){
+	// .click(function) calls  the method .on('click', function) 
+	$('button').click(function()  			
+	{
+	console.log(this); 			// returns the clicked element tag
+	console.log($(this));		// returns the jquery object encapsulated (gives acces to jQuery methods)
+	var $this = $(this);			// good practice to avoid diving repeadetly and ineficiently in the DOM								
+	var stylesheet = $this.attr('id') + '.css'; // less elegant than custom attributes
+	stylesheet = $this.data('cssfile');
+	$('link').attr('href', stylesheet);
+	// $('button').removeAttr('disabled');		// re enable all the buttons or use 
+	$this.siblings()    						// the siblings method to get only same DOM-level elements 
+		 	.removeAttr('disabled')
+		 	.end()								// use .end()  to go back to $this (revert the effect of siblings method)
+		 .attr('disabled', 'disabled');			// good example of chainning
+	
+	});
+})();
+</script>
+
+</body>
+</html>
