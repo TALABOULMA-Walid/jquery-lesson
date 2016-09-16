@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events ...201</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- Definition List / Definition Term / Definition Detail -->
+<dl>
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+	<dt>What Are Your Hours?</dt>
+	<dd>We are open 24/7.</dd>
+
+
+</dl>
+
+
+
+<script type="text/javascript" src="../jquery-3.1.0.js"></script>
+<script>
+
+(function(){
+
+	// or use $('dd').hide() isntead of addClass; ( will embed style attribute )
+	// filter to select element that fill some criteria here it is
+	// :nth-child(n+4) which means start from the 4th element of the siblings
+
+	$('dd').filter(':nth-child(n+4)').addClass('hide');
+
+	// we delegate the event handling to the parent element 'dl'
+	// to reduce the amount of event attached to each element
+	// then we filter with 'dt' to trigger only when hovering over 'dt' childs
+
+	$('dl').on('mouseenter', 'dt', function(){
+		$(this).next()
+			   .slideDown(200)
+			   		.siblings('dd')
+			   		.slideUp(200);
+
+	});
+
+
+})();
+
+	
+
+
+
+
+</script>
+
+</body>
+</html>
